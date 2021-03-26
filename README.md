@@ -3,4 +3,4 @@
 ## Creative Computing 
 ## Tijana Adam - N00170280
 
-This repository contains 'beta code' for the 4th Year Research Project of Creative Computing module, 2020/21. Project contains Client (front-end code) and Server (back-end code).
+This repository contains 'source code' for the 4th Year Research Project of Creative Computing module, 2020/21. Project contains Client (front-end code) and Server (back-end code).
