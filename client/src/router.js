@@ -67,5 +67,16 @@ export default new Router({
       name: "articles_edit",
       component: () => import("./views/articles/Edit.vue"),
     },
+    // REGISTER AND LOGIN ROUTES 
+    {
+      path: "/register",
+      name: "register_index",
+      component: () => import("./views/register/Index.vue"),
+    },
+    {
+      path: "/login",
+      name: "login_index",
+      component: () => import("./views/login/Index.vue"),
+    },
   ],
 });

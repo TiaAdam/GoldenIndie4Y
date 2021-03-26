@@ -4,7 +4,9 @@
     <router-link to="/about">About</router-link> |
     <router-link :to="{ name: 'articles_index' }">Article</router-link>|
     <router-link to="/film">Films</router-link>|
-    <router-link :to="{ name: 'reviews_index' }">Reviews</router-link>
+    <router-link :to="{ name: 'reviews_index' }">Reviews</router-link>|
+    <router-link :to="{name: 'register_index'}">Register</router-link>|
+    <router-link :to="{name: 'login_index'}">Login</router-link>
     <!-- <router-link :to="{ name: 'reviews_index', params: { id: 123 }}">Reviews</router-link> -->
   </div>
 </template>

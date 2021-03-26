@@ -1,17 +1,22 @@
 <template>
   <div id="app">
+  <v-container class="container">
     <NavBar />
-    <router-view />
+     <router-view />
+  </v-container>
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
+    Footer,
   },
 };
 </script>

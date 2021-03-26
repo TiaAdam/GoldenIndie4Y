@@ -1,76 +1,79 @@
 <template>
-  <div class="articles">
-    <!-- <h1>This page will display an article.</h1> -->
-    <v-card color="grey lighten-4" flat height="200px" tile>
-      <v-toolbar class="toolbar" dense>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  <!-- Adding container -->
+  <v-container class="container">
+    <div class="articles">
+      <!-- <h1>This page will display an article.</h1> -->
+      <v-card color="pink lighten-4" flat height="100px" tile>
+        <v-toolbar color="pink lighten-4" class="toolbar" dense>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-toolbar-title>ARTICLES</v-toolbar-title>
+          <v-spacer></v-spacer>
 
-        <v-toolbar-title>ARTICLES</v-toolbar-title>
+          <v-btn icon>
+            <v-icon>mdi-magnify</v-icon>
+          </v-btn>
 
-        <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
 
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+          <v-btn icon>
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+          <v-btn depressed color="gray"
+            ><router-link to="/articles/create">
+              CREATE ARTICLE
+            </router-link>
+          </v-btn>
+        </v-toolbar>
+      </v-card>
 
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-        <v-btn depressed color="gray"
-          ><router-link to="/articles/create">
-            CREATE ARTICLE
-          </router-link>
-        </v-btn>
-      </v-toolbar>
-    </v-card>
-
-    <!-- ARTICLES CARDS -->
-    <v-card 
-      v-for="article in articles"
-      :key="article._id"
-      :loading="loading"
-      class="mx-auto my-12 article_one"
-      max-width="374"
-    >
-      <v-col >
-        <template slot="progress">
-          <v-progress-linear
-            color="deep-purple"
-            height="10"
-            indeterminate
-          ></v-progress-linear>
-        </template>
-
-        <v-img
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          @load="this.$redrawVueMasonry()"
-        ></v-img>
-
-        <v-card-title>
-          <router-link
-            :to="{ name: 'articles_show', params: { id: article._id } }"
+      <!-- ARTICLES CARDS -->
+      <v-col>
+        <v-row v-masonry>
+          <v-card
+            v-for="article in articles"
+            :key="article._id"
+            :loading="loading"
+            class="mx-auto my-12 article_one"
+            max-width="374"
           >
-            {{ article.title }}
-          </router-link>
-        </v-card-title>
+            <template slot="progress">
+              <v-progress-linear
+                color="deep-purple"
+                height="10"
+                indeterminate
+              ></v-progress-linear>
+            </template>
 
-        <v-card-text>
-          <v-row align="center" class="mx-0">
-            <br />
-          </v-row>
-          <div>{{ article.content }}</div>
-          <br />
-          <div>{{ article.category }}</div>
-        </v-card-text>
-        <v-divider class="mx-4"></v-divider>
+            <v-img
+              height="250"
+              src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+              @load="this.$redrawVueMasonry()"
+            ></v-img>
+
+            <v-card-title>
+              <router-link
+                :to="{ name: 'articles_show', params: { id: article._id } }"
+              >
+                {{ article.title }}
+              </router-link>
+            </v-card-title>
+
+            <v-card-text>
+              <v-row align="center" class="mx-0">
+                <br />
+              </v-row>
+              <div>{{ article.content }}</div>
+              <br />
+              <div>{{ article.category }}</div>
+            </v-card-text>
+            <v-divider class="mx-4"></v-divider>
+          </v-card>
+        </v-row>
       </v-col>
-    </v-card>
-  </div>
+    </div>
+  </v-container>
 </template>
 
 <script>
@@ -98,6 +101,11 @@ export default {
 </script>
 
 <style scoped>
+/* CONTAINER */
+.container {
+  height: 1500px;
+  width: 1500px;
+}
 .toolbar {
   margin-bottom: 300px;
 }

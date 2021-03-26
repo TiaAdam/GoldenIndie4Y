@@ -1,7 +1,9 @@
 <template>
+ <!-- Adding container -->
+  <v-container class="container">
   <div class="reviews_create">
     <!-- <h1>This page will display an article.</h1> -->
-    <v-card color="grey lighten-4" flat height="200px" tile>
+    <v-card color="grey lighten-4" flat height="100px" tile>
       <v-toolbar class="toolbar" dense>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
@@ -146,6 +148,7 @@
       </form>
     </validation-observer>
   </div>
+  </v-container>
 </template>
 
 <script>
@@ -222,6 +225,12 @@ export default {
 </script>
 
 <style scoped>
+/* CONTAINER */
+.container {
+  height: 1500px;
+  width: 1500px;
+}
+
 toolbar {
   margin-top: 300px;
 }
