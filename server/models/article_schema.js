@@ -10,9 +10,9 @@ const articleSchema = new Schema(
       type: String,
       required: [true, 'Content field is required!'],
     },
-    category: {
-      type: String,
-      required: [true, 'Type field is required!'],
+    categories: {
+      type: Array,
+      required: [true, 'Category field is required!'],
     },
     author: {
       type: Schema.Types.ObjectId,

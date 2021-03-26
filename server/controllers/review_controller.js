@@ -30,6 +30,17 @@ const readData = (req, res) => {
     });
 };
 
+const getLatest = (req, res) => {
+  Review.find().limit(5)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+};
+
 const readOne = (req, res) => {
   Review.findById(req.params.id)
     .then((data) => {
@@ -83,6 +94,7 @@ module.exports = {
   createData,
   readData,
   readOne,
+  getLatest,
   updateData,
   deleteData,
 };
