@@ -4,6 +4,7 @@ const {
   createData,
   readData,
   readOne, 
+  getLatest, 
   updateData,
   deleteData,
 } = require('../controllers/review_controller');
@@ -13,6 +14,7 @@ const router = express.Router();
 router
   .post('/', createData)
   .get('/', readData)
+  .get('/latest', getLatest)
   .get('/:id', readOne)
   .put('/:id', updateData)
   .delete('/:id', deleteData);
