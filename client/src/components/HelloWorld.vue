@@ -2,17 +2,16 @@
   <!-- Adding container -->
   <v-container class="container">
     <div class="hello">
-      <h1>{{ msg }}</h1>
-      <!-- <h3>This is Home page of the website!</h3> -->
-      <v-carousel hide-delimiters height="700px">
+      <v-carousel hide-delimiters height="700px" class="carousel">
         <v-carousel-item
           v-for="(item, i) in items"
           :key="i"
           :src="item.src"
         ></v-carousel-item>
       </v-carousel>
+
       <!-- Reviews -->
-      <h1>Reviews</h1>
+      <h1 class="reviewTitle">REVIEWS</h1>
       <!-- REVIEWS CARDS -->
       <v-col>
         <v-row v-masonry>
@@ -69,9 +68,9 @@
 
 <script>
 import axios from "axios";
-import parasite from "@/assets/parasite.jpg";
-import hollywood from "@/assets/hollywood.jpg";
-import hilly from "@/assets/hilly.jpg";
+import parasite from "@/assets/minari.jpg";
+import hollywood from "@/assets/metal.jpg";
+import hilly from "@/assets/woman.jpg";
 import queen from "@/assets/queen.jpg";
 
 export default {
@@ -119,6 +118,10 @@ export default {
   height: 1500px;
   width: 1500px;
 }
+
+.carousel {
+  margin-top: -150px;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -135,5 +138,10 @@ a {
 }
 #inspire {
   height: 100vh;
+}
+
+.reviewTitle {
+  margin-top: 70px;
+  margin-bottom: 30px;
 }
 </style>

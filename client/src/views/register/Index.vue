@@ -2,94 +2,76 @@
   <!-- Adding container -->
   <v-container class="container">
     <div class="register_index">
-      <v-card color="grey lighten-4" flat height="150px" tile>
-        <v-toolbar class="toolbar" dense>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
-          <!-- TOOLBAR/NAVIGATION -->
-          <v-toolbar-title>REGISTER FORM</v-toolbar-title>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-toolbar>
+      <!-- REGISTER FORM TEST -->
+      <v-card width="1000" class="mx-auto mt-5 registerForm">
+        <v-card-title>
+          <h2 class="display-1">REGISTER FORM</h2>
+        </v-card-title>
+        <v-card-text>
+          <form @submit.prevent="submit">
+            <validation-provider v-slot="{ errors }" name="Name">
+              <v-text-field
+                v-model="name"
+                :counter="10"
+                :error-messages="errors"
+                label="Name"
+                required
+              ></v-text-field>
+            </validation-provider>
+            <validation-provider v-slot="{ errors }" name="Surname">
+              <v-text-field
+                v-model="surname"
+                :counter="10"
+                :error-messages="errors"
+                label="Surname"
+                required
+              ></v-text-field>
+            </validation-provider>
+            <validation-provider
+              v-slot="{ errors }"
+              name="phoneNumber"
+              :rules="{
+                required: true,
+                digits: 7,
+                regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$',
+              }"
+            >
+              <v-text-field
+                v-model="phoneNumber"
+                :counter="7"
+                :error-messages="errors"
+                label="Phone Number"
+                required
+              ></v-text-field>
+            </validation-provider>
+            <validation-provider
+              v-slot="{ errors }"
+              name="email"
+              rules="required|email"
+            >
+              <v-text-field
+                v-model="email"
+                :error-messages="errors"
+                label="E-mail"
+                required
+              ></v-text-field>
+            </validation-provider>
+            <v-text-field label="Username" prepend-icon="mdi-account-circle" />
+            <v-text-field
+              :type="showPassword ? 'text' : 'password'"
+              label="Password"
+              prepend-icon="mdi-lock"
+              :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye-off'"
+              @click:append="showPassword = !showPassword"
+            />
+            <v-card-actions>
+              <v-btn class="regButton"> Register </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn class="logButton"> Login </v-btn>
+            </v-card-actions>
+          </form>
+        </v-card-text>
       </v-card>
-      <!-- CREATING ARTICLE FORM  -->
-      <validation-observer ref="observer" v-slot="{ invalid }">
-        <form @submit.prevent="submit">
-          <validation-provider
-            v-slot="{ errors }"
-            name="Name"
-            rules="required|max:10"
-          >
-            <v-text-field
-              v-model="name"
-              :counter="10"
-              :error-messages="errors"
-              label="Name"
-              required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-            v-slot="{ errors }"
-            name="Surname"
-            rules="required|max:10"
-          >
-            <v-text-field
-              v-model="surname"
-              :counter="10"
-              :error-messages="errors"
-              label="Surname"
-              required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-            v-slot="{ errors }"
-            name="phoneNumber"
-            :rules="{
-              required: true,
-              digits: 7,
-              regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$',
-            }"
-          >
-            <v-text-field
-              v-model="phoneNumber"
-              :counter="7"
-              :error-messages="errors"
-              label="Phone Number"
-              required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-            v-slot="{ errors }"
-            name="email"
-            rules="required|email"
-          >
-            <v-text-field
-              v-model="email"
-              :error-messages="errors"
-              label="E-mail"
-              required
-            ></v-text-field>
-          </validation-provider>
-
-          <v-btn class="mr-4" type="submit" :disabled="invalid">
-            LOGIN
-          </v-btn>
-          <v-btn class="clear" @click="clear">
-            CLEAR
-          </v-btn>
-        </form>
-      </validation-observer>
     </div>
   </v-container>
 </template>
@@ -174,9 +156,25 @@ export default {
 <style scoped>
 /* CONTAINER */
 .container {
-  height: 750px;
+  height: 600px;
   width: 1500px;
 }
+.register_index {
+  margin-top: -150px;
+  padding-top: 50px;
+}
+.registerForm {
+  margin-left: 200px;
+}
+
+.regButton {
+  color: crimson;
+}
+
+.logButton {
+  color: crimson;
+}
+
 toolbar {
   margin-top: 300px;
 }

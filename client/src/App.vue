@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
-  <v-container class="container">
-    <NavBar />
-     <router-view />
-  </v-container>
-    <Footer />
+  <div id="app" class="grey lighten-4">
+    <v-container class="container">
+      <NavBar />
+      <router-view />
+      <v-footer>
+        <Footer />
+      </v-footer>
+    </v-container>
   </div>
 </template>
 
@@ -16,29 +18,18 @@ export default {
   name: "App",
   components: {
     NavBar,
-    Footer,
+    Footer
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+
+<style lang="scss">
+@import "./scss/style.scss";
+
+.container{
+  height: inherit;
+  width: 1500px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

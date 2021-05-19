@@ -4,32 +4,13 @@
     <div class="reviews_index">
       <!-- Heigh=100, to decrease the spacing between toolbar and reviews -->
       <v-card color="grey lighten-4" flat height="100px" tile>
-        <v-toolbar class="toolbar" dense>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-          <v-toolbar-title>REVIEWS</v-toolbar-title>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-          <v-btn depressed color="gray"
-            ><router-link to="/reviews/create">
-              CREATE REVIEW
-            </router-link>
-          </v-btn>
-        </v-toolbar>
+        <h1 class="title">REVIEWS</h1>
+        <v-btn class="createReview" depressed color="gray"
+          ><router-link to="/reviews/create">
+            CREATE REVIEW
+          </router-link>
+        </v-btn>
       </v-card>
-
       <!-- REVIEWS CARDS -->
       <v-col>
         <v-row v-masonry>
@@ -109,10 +90,24 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  height: 570px;
+  width: 1500px;
+}
+
+.reviews_index {
+  margin-top: -150px;
+}
+.title {
+  margin-bottom: 20px;
+}
+.createReview {
+  float: inherit;
+  margin-top: -10px;
+}
 .toolbar {
   margin-bottom: 300px;
 }
-
 .reviews_one {
   float: left;
   margin-left: 50px;

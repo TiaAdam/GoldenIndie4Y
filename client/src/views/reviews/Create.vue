@@ -1,153 +1,127 @@
 <template>
- <!-- Adding container -->
+  <!-- Adding container -->
   <v-container class="container">
-  <div class="reviews_create">
-    <!-- <h1>This page will display an article.</h1> -->
-    <v-card color="grey lighten-4" flat height="100px" tile>
-      <v-toolbar class="toolbar" dense>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-        <v-toolbar-title>CREATE YOUR OWN REVIEW</v-toolbar-title>
-
-        <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </v-toolbar>
-    </v-card>
-
-    <!-- CREATING REVIEW FORM  -->
-    <validation-observer ref="observer" v-slot="{ invalid }">
-      <form class="form_one" @submit.prevent="submit">
-        <validation-provider
-          v-slot="{ errors }"
-          name="Title"
-          rules="required|max:10"
-        >
-          <v-text-field
-            v-model="title"
-            :counter="10"
-            :error-messages="errors"
-            label="Title"
-            required
-          ></v-text-field>
-        </validation-provider>
-        <validation-provider
-          v-slot="{ errors }"
-          name="Filme"
-          rules="required|max:10"
-        >
-          <v-text-field
-            v-model="title"
-            :counter="10"
-            :error-messages="errors"
-            label="Film"
-            required
-          ></v-text-field>
-        </validation-provider>
-        <validation-provider
-          v-slot="{ errors }"
-          name="Author"
-          rules="required|max:10"
-        >
-          <v-text-field
-            v-model="title"
-            :counter="10"
-            :error-messages="errors"
-            label="Author"
-            required
-          ></v-text-field>
-        </validation-provider>
-        <v-col>
-          <h3>Related Categories</h3>
-          <v-row>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="Film"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="Directing"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="Producing"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="New Releases"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="European Cinema"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="Asian Cinema"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-            <v-checkbox
-              class="cate"
-              v-model="ex4"
-              label="African Cinema"
-              color="category"
-              value="ctegory"
-              hide-details
-            ></v-checkbox>
-          </v-row>
-        </v-col>
-        <!-- TEXTAREA FOR THE REVIEW CONTENT -->
-        <v-container fluid>
-          <v-textarea
-            class="textarea"
-            clearable
-            clear-icon="mdi-close-circle"
-            label="Content"
-            value="This content is clearable."
-          ></v-textarea>
-        </v-container>
-        <v-btn class="mr-4" type="submit" :disabled="invalid">
-          CREATE
-        </v-btn>
-        <v-btn class="clear" @click="clear">
-          CLEAR
-        </v-btn>
-         <v-checkbox
-              v-model="ex4"
-              label="Contains spoilers!"
-              color="red darken-3"
-              value="red darken-3"
-              hide-details
-            ></v-checkbox>
-      </form>
-    </validation-observer>
-  </div>
+    <div class="reviews_create">
+      <!-- <h1>This page will display an article.</h1> -->
+      <v-card width="1000" class="mx-auto mt-5 createReviewForm">
+        <v-card-title>
+          <h2 class="display-1">CREATE REVIEW</h2>
+        </v-card-title>
+        <v-card-text>
+          <!-- CREATING REVIEW FORM  -->
+          <validation-observer ref="observer" v-slot="{}">
+            <form class="form_one" @submit.prevent="submit">
+              <v-col cols="12" sm="6">
+                <v-select :authors="authors" v-model="author">
+                  <option
+                    v-for="auth in authors"
+                    :key="auth._id"
+                    :value="auth._id"
+                  >
+                    {{ auth.firstName }} {{ auth.lastName }}
+                  </option>
+                </v-select>
+              </v-col>
+              <validation-provider v-slot="{ errors }" name="Title">
+                <v-text-field
+                  v-model="title"
+                  :error-messages="errors"
+                  label="Title"
+                  required
+                ></v-text-field>
+              </validation-provider>
+              <validation-provider v-slot="{ errors }" name="Film">
+                <v-text-field
+                  v-model="film"
+                  :error-messages="errors"
+                  label="Film"
+                  required
+                ></v-text-field>
+              </validation-provider>
+              <v-col>
+                <h3>Related Categories</h3>
+                <v-row>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="Film"
+                    value="film"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="Directing"
+                    value="directing"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="Producing"
+                    value="producing"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="New Releases"
+                    value="newReleases"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="European Cinema"
+                    value="european"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="Asian Cinema"
+                    value="asian"
+                    hide-details
+                  ></v-checkbox>
+                  <v-checkbox
+                    class="cate"
+                    v-model="categories"
+                    label="African Cinema"
+                    value="african"
+                    hide-details
+                  ></v-checkbox>
+                </v-row>
+              </v-col>
+              <!-- TEXTAREA FOR THE ARTICLE CONTENT -->
+              <v-textarea
+                class="textarea"
+                clearable
+                clear-icon="mdi-close-circle"
+                label="Content"
+                v-model="content"
+                value="This content is clearable."
+              ></v-textarea>
+               <v-card-actions>
+                <v-btn class="mr-4 createButton" type="submit">
+                  CREATE
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn class="clearButton" @click="clear">
+                  CLEAR
+                </v-btn>
+              </v-card-actions>
+              <!-- <v-checkbox
+                v-model="spoiler"
+                label="Contains spoilers!"
+                color="red darken-3"
+                value="red darken-3"
+                hide-details
+              ></v-checkbox> -->
+            </form>
+          </validation-observer>
+        </v-card-text>
+      </v-card>
+    </div>
   </v-container>
 </template>
 
@@ -189,7 +163,7 @@ extend("email", {
 });
 
 export default {
-  name: "ReviewCreate",
+  name: "Create",
   props: {},
   components: {
     ValidationProvider,
@@ -197,20 +171,36 @@ export default {
   },
   data() {
     return {
-      name: "",
-      phoneNumber: "",
-      email: "",
-      select: null,
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-      checkbox: null,
+      title: "",
+      author: "600ecb28396445b0c2afdf35",
+      content: "",
+      categories: [],
+      authors: [],
     };
   },
+  mounted() {
+    this.getAuthors();
+  },
   methods: {
+    getAuthors() {
+      axios.get("http://localhost:9000/api/authors/").then((response) => {
+        console.log(response.data);
+        this.authors = response.data;
+      });
+    },
     submit() {
       this.$refs.observer.validate();
-      axios.post("http://localhost:9000/api/articles/", {}).then((response) => {
-        this.reviews = response.data;
-      });
+      axios
+        .post("http://localhost:9000/api/reviews/", {
+          title: this.title,
+          author: this.author,
+          content: this.content,
+          categories: this.categories,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push({ name: "reviews_index" });
+        });
     },
     clear() {
       this.name = "";
@@ -227,12 +217,27 @@ export default {
 <style scoped>
 /* CONTAINER */
 .container {
-  height: 1500px;
+  height: 700;
   width: 1500px;
 }
 
-toolbar {
-  margin-top: 300px;
+.reviews_create {
+  margin-top: -150px;
+  padding-top: 50px;
+}
+
+.createReviewForm {
+  margin-bottom: 100px;
+  margin-left: 200px;
+}
+
+.createButton {
+  color: crimson;
+}
+
+.clearButton {
+  margin-left: 20px;
+  color: crimson;
 }
 
 .clear {
@@ -246,9 +251,5 @@ h3 {
 
 .cate {
   margin-right: 50px;
-}
-
-.form_one{
-  margin-bottom:800px;
 }
 </style>

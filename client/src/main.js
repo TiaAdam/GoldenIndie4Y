@@ -5,6 +5,8 @@ import vuetify from '@/plugins/vuetify' // path to vuetify export
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 const compiler = require('vue-template-compiler')
 
+import "./scss/style.scss";
+
 //Import Bootstrap an BootstrapVue CSS files (order is important)
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'

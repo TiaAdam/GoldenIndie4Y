@@ -4,25 +4,6 @@
     <div class="articles_show">
       <!-- <h1>This page will display an article.</h1> -->
       <v-card color="brown lighten-4" flat height="100px" tile>
-        <v-toolbar class="toolbar" dense>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-          <v-toolbar-title>ARTICLE</v-toolbar-title>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-
-          <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-toolbar>
       </v-card>
       <h1 clsss="title">{{ article.title }}</h1>
       <subtitle-1 class="text-justify text1" height="200px">{{ article.fullContent }}</subtitle-1>
@@ -82,15 +63,17 @@ export default {
 <style scoped>
 /* CONTAINER */
 .container {
-  height: 1000px;
+  height: 600px;
   width: 1500px;
+}
+.articles_show{
+  margin-top: -130px;
 }
 .toolbar {
   padding-bottom: 10px;
 }
 .title {
-  padding-top: 300px;
-  margin-top: 600px;
+  margin-bottom: -600px;
 }
 .images {
   margin-top: 30px;
